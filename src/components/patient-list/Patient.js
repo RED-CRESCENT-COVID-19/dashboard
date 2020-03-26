@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Table, Tag } from 'antd';
+import RouterApp from '../../RouterApp';
 
 const columns = [
     {
@@ -143,7 +144,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Table columns={columns} dataSource={data} />
+            <RouterApp>
+                <Table columns={columns} dataSource={data} />
+            </RouterApp>
         );
     }
 }
