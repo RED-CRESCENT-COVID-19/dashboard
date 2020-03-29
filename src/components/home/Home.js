@@ -1,9 +1,10 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Layout, Row, Col, Card, Typography, List, Descriptions, Statistic } from 'antd';
-import moment from 'moment';
-import RoterApp from '../../RouterApp';
+import { Row, Col, Card, Typography, List, Descriptions, Statistic } from 'antd';
 import RouterApp from '../../RouterApp';
+import Chart from './Chart';
+import Center from './CenterModal';
+import PatientModal from './PatientModal';
 
 const gridStyle = {
     width: '20%',
@@ -32,12 +33,11 @@ class Home extends React.Component {
     render() {
         return (
             <RouterApp>
-
                 <Row gutter={24} style={{ padding: 14 }}>
                     <Col span={18}>
                         <Row gutter={24} style={{ padding: 14 }}>
                             <Col span={22}>
-                                <Card title="My Center" hoverable>
+                                <Card title="My Center" hoverable extra={<Center />}>
                                     <Card.Grid style={gridStyle}>
                                         <Typography.Title strong='true'>17</Typography.Title>
                                         <Typography.Text strong='true'> Admitted </Typography.Text>
@@ -91,36 +91,13 @@ class Home extends React.Component {
                         </Row>
 
                         <Row gutter={24} style={{ padding: 14 }}>
-                            <Col span={22}>
-                                <Card title="Waiting Patients" hoverable>
-                                    <Card.Grid style={gridStyle}>
-                                        <Typography.Title strong='true'>17</Typography.Title>
-                                        <Typography.Text strong='true'> Admitted </Typography.Text>
-                                    </Card.Grid>
-                                    <Card.Grid style={gridStyle}>
-                                        <Typography.Title type="secondary" strong='true'>0</Typography.Title>
-                                        <Typography.Text type="secondary"> Free Beds </Typography.Text>
-                                    </Card.Grid>
-                                    <Card.Grid style={gridStyle}>
-                                        <Typography.Title type="warning" strong='true'>4</Typography.Title>
-                                        <Typography.Text type="warning"> Free Ventilators </Typography.Text>
-                                    </Card.Grid>
-                                    <Card.Grid style={gridStyle}>
-                                        <Typography.Title style={{ color: 'green' }} type="default" strong='true'>13</Typography.Title>
-                                        <Typography.Text style={{ color: 'green' }}> Waiting </Typography.Text>
-                                    </Card.Grid>
-                                    <Card.Grid style={gridStyle}>
-                                        <Typography.Title strong='true'>17</Typography.Title>
-                                        <Typography.Text strong='true'> Delivery </Typography.Text>
-                                    </Card.Grid>
-                                </Card>
-                            </Col>
+                            <Chart />
                         </Row>
                     </Col>
                     <Col span={6}>
                         <Row gutter={24} style={{ padding: 14 }}>
                             <Col span={24}>
-                                <Card title="My Patients">
+                                <Card title="My Patients" extra={<PatientModal />}>
                                     <Card hoverable>
                                         <Statistic
                                             title="Escaped"
@@ -146,7 +123,6 @@ class Home extends React.Component {
                                         <Statistic
                                             title="Oxydized"
                                             value={1}
-                                            precision={2}
                                             valueStyle={{ color: '#3f8600' }}
                                         />
                                     </Card>

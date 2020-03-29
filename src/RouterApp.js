@@ -8,10 +8,11 @@ import {
 import { Layout, Menu, Button, AutoComplete, PageHeader } from "antd";
 import Header from './components/common/Header';
 import { HomeOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import logo from './logo.png';
 
 
 
-const {  Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class RouterApp extends Component {
@@ -43,7 +44,10 @@ class RouterApp extends Component {
           collapsed={this.state.collapsed}
           onCollapse={this.onCollapse}
         >
-          <div className="logo" />
+          {/* <div className="logo" /> */}
+          <div className='logo'>
+            <img src={logo} className='logo-img'/>
+          </div>
           <Menu theme="dark" defaultSelectedKeys={window.location.pathname} mode="inline">
             <Menu.Item key="/home">
               <HomeOutlined />
@@ -58,7 +62,7 @@ class RouterApp extends Component {
           </Menu>
         </Sider>
         <Layout>
-        <Header />
+          <Header />
           <Content
             style={{
               margin: "24px 16px",
